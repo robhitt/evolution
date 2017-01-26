@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+}
+
+#wrapper {
+  height: 100vh;
+  width: 100vw;
+  /*display: flex;
+  justify-content: center;
+  align-items: center;*/
+}
+
+#board {
+  position: absolute;
+  height: 80vh;
+  width: 80vh;
+  top: 10%;
+  left: 10%;
+  background-color: #FFFFFF;
+
+}
+
+.cell {
+  opacity: .75;
+  position: absolute;
+  border: 1px grey solid;
+  box-sizing: border-box;
+}
+
+.leftRow {
+  border-left: 5px black solid;
+}
+
+.rightRow {
+  border-right: 5px black solid;
+}
+
+.topRow {
+  border-top: 5px black solid;
+}
+
+.bottomRow {
+  border-bottom: 5px black solid;
+}
