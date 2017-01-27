@@ -84,6 +84,18 @@ function renderBoard(columns, rows) {
     cellElement.style.top = (iterator % rows) * cellBoxHeight + 'px'
     cellElement.style.left = (Math.floor(iterator / rows) * cellBoxWidth) + 'px'
 
+
+    // create a new image element
+    var imageElement = document.createElement('img')
+    imageElement.classList.add('cellImage')
+
+    var imageName = 'chicken/chicken6.png'
+
+    imageElement.setAttribute('src', `images/${imageName}`);
+
+    cellElement.appendChild(imageElement)
+
+
     boardElement.appendChild(cellElement)
   }
 
@@ -110,11 +122,6 @@ function renderBoard(columns, rows) {
   //   console.log('test')
   // }
 
-
-  // function convertAtoS(array) {
-  //
-  //   console.log ('[' + array.toString() + ']')
-  // }
 
 
 
@@ -203,6 +210,9 @@ function ListenForResize(columns, rows) {
 renderPage(columns, rows)
 //renderBoard(columns, rows)
 ListenForResize(columns, rows)
+
+
+
 
 
 })
