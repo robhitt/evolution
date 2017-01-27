@@ -26,7 +26,7 @@ body {
   right: 0;
   top: 0;
   width: 80vw;
-
+  /*z-index: 1;*/
 }
 
 .cell {
@@ -50,4 +50,51 @@ body {
 
 .bottomRow {
   border-bottom: 5px black solid;
+}
+
+#messages-container{
+    display: none;
+    color: white;
+    background-color: black;
+    bottom: 0;
+    height: 10vh;
+    left: 0;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 70vw;
+}
+
+#messages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: black;
+  bottom: 0;
+  height: 10vh;
+  left: 0;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 70vw;
+  /*z-index: 2;*/
+}
+
+.cellImage {
+  width: 100%;
+  top: 0;
+  height: 100%;
+  bottom: 1px;
+  left: 0;
+  position: absolute;
+  display: block;
 }

@@ -1,30 +1,54 @@
-class evolution {
+class Evolution {
   constructor() {
-    this.board = new Board()
-    this.playCount = 0
+    console.log('Evolution class created...')
   }
+}
 
-  render(){
-    this.board.render(this.addEventHandlers.bind(this))
-  }
+r = new Player()
+r.name = "Rob"
+r.keyPress()
 
-  addEventHandlers(){
-    $('.cell').click( (event) => {
-      this.updateBoard(event.target.id)
-      $(event.target).text(this.currentPlayer())
-      this.playCount += 1
+Evolution.allPlayers = [r]
+Evolution.currentPlayer = r
+
+Evolution.flash = function (potentialDirection) {
+    $('#messages').text(`Moving ${potentialDirection} is not valid.`)
+    $('#messages-container').fadeTo(2000, .8, function() {
+      $(this).fadeTo(2000,0, function() {
+        $('#messages').text('')
+      })
     })
   }
 
-  updateBoard(index){
-    this.board.positions[index] = this.currentPlayer()
-  }
 
-  currentPlayer(){
-    if (this.playCount % 2 === 0) {
-      return  'A'
-    } else {
-      return 'R'
-    }
-  }
-}
+
+// class evolution {
+//   constructor() {
+//     this.board = new Board()
+//     this.playCount = 0
+//   }
+//
+//   render(){
+//     this.board.render(this.addEventHandlers.bind(this))
+//   }
+//
+//   addEventHandlers(){
+//     $('.cell').click( (event) => {
+//       this.updateBoard(event.target.id)
+//       $(event.target).text(this.currentPlayer())
+//       this.playCount += 1
+//     })
+//   }
+//
+//   updateBoard(index){
+//     this.board.positions[index] = this.currentPlayer()
+//   }
+//
+//   currentPlayer(){
+//     if (this.playCount % 2 === 0) {
+//       return  'A'
+//     } else {
+//       return 'R'
+//     }
+//   }
+// }
