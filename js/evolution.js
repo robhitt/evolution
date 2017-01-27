@@ -4,12 +4,6 @@ class Evolution {
   }
 }
 
-r = new Player()
-r.name = "Rob"
-r.keyPress()
-
-Evolution.allPlayers = [r]
-Evolution.currentPlayer = r
 
 Evolution.flash = function (potentialDirection) {
     $('#messages').text(`Moving ${potentialDirection} is not valid.`)

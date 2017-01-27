@@ -89,7 +89,7 @@ function renderBoard(columns, rows) {
     var imageElement = document.createElement('img')
     imageElement.classList.add('cellImage')
 
-    var imageName = 'chicken/chicken6.png'
+    var imageName = 'clear.png'
 
     imageElement.setAttribute('src', `images/${imageName}`);
 
@@ -211,8 +211,20 @@ renderPage(columns, rows)
 //renderBoard(columns, rows)
 ListenForResize(columns, rows)
 
+r = new Player()
+r.name = "Rob"
+
+a = new Player()
+a.name = "Andy"
 
 
+r.keyPress()
+
+Evolution.allPlayers = [r]
+Evolution.currentPlayer = r
+Evolution.currentPlayer.render()
+Evolution.currentPlayer = a
+a.render()
 
 
 })
