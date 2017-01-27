@@ -3,6 +3,7 @@ body {
 }
 
 #wrapper {
+  background-color: #ADD8E6;
   height: 100vh;
   width: 100vw;
   /*display: flex;
@@ -11,12 +12,20 @@ body {
 }
 
 #board {
-  position: absolute;
-  height: 80vh;
-  width: 80vh;
-  top: 10%;
-  left: 10%;
   background-color: #FFFFFF;
+  bottom: 0;
+  height: 80vw;
+
+
+  left: 0;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 80vw;
 
 }
 
