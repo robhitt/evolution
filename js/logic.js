@@ -15,13 +15,16 @@ while (true)
   userInput() // grabs user input
 
   var turnCount = 0
-  takeTurn(userInput, userInstance) // turnCount += 1
+
+  takeTurn(userInput) // turnCount += 1
 
   // this is what the move function may have.
-  function takeTurn(userInput, userInstance) // initiates logic for  moving around board and updating user's power
+  function takeTurn(userInput) // initiates logic for  moving around board and updating user's power
 
     // in move() Look into future cell to see what we can and can't do
     targetCoordinates = userInput.updateCoordinates(playerCoordinates)
+
+
     if valid(targetCoordinates) // NOT topRow, bottomRow, leftRow or rightRow, or occupied but opposite player's coordinates.
       if $(div targetCoordinates).innerText === "mushroom"
 
@@ -29,19 +32,23 @@ while (true)
         removeMushroom() // replace mushroom div with userName div
         updateUserCoordinatesAndMoveDivs()
 
+
         if (checkWinner())  // if this.user.power > 3 return WINNER STUFF HAPPENS GAME OVER
           gameNotOver = false // change background color to something cool to notify and pop up
         else
+          switchUserInstance()
           return takeTurn() // or move()?? // next player moves
         end
       else
         updateUserCoordinatesAndMoveDivs()
+        switchUserInstance()
         takeTurn()
       end
 
     else
 
       alert('invalid move, please try again')
+      switchUserInstance()
       return takeTurn()
 
     end

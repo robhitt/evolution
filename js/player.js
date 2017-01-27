@@ -24,8 +24,11 @@ class Player {
   }
 
   emptyDiv(coordinates) {
-//    document.getElementById(coordinates).textContent = " "
-    document.getElementById(coordinates).style.backgroundColor = 'white'
+  //  document.getElementById(coordinates).textContent = " "
+    var cellToEmpty = document.getElementById(coordinates)
+    cellToEmpty.style.backgroundColor = 'white'
+    cellToEmpty.getElementsByClassName('cellImage')[0].setAttribute('src', 'images/clear.png');
+
   }
 
   // paramater will be something in this array ['left', 'right', 'up', 'down']
@@ -33,7 +36,7 @@ class Player {
 
     switch (potentialDirection) {
       case 'left':
-        if (document.getElementById(r.stringCoordinates()).classList.contains('leftRow')) {
+        if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('leftRow')) {
           // alert('Moving left is not valid, please try again')
 
           Evolution.flash(potentialDirection)
@@ -42,21 +45,21 @@ class Player {
         break;
 
       case 'right':
-        if (document.getElementById(r.stringCoordinates()).classList.contains('rightRow')) {
+        if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('rightRow')) {
           Evolution.flash(potentialDirection)
           return false
         }
         break;
 
       case 'up':
-        if (document.getElementById(r.stringCoordinates()).classList.contains('topRow')) {
+        if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('topRow')) {
           Evolution.flash(potentialDirection)
           return false
         }
         break;
 
       case 'down':
-        if (document.getElementById(r.stringCoordinates()).classList.contains('bottomRow')) {
+        if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('bottomRow')) {
           Evolution.flash(potentialDirection)
           return false
         }
@@ -93,10 +96,8 @@ class Player {
     this.render()
   }
 
-// ADD VALID MOVE IN HERE?
+
   keyPress() {
-
-
     document.addEventListener('keydown', function(event) {
 
       console.log('listening for key presses')
@@ -148,35 +149,17 @@ class Player {
     // z = 90
     // ? = 191
 
-
-
-
-
-
-
-
-
-
-
   });
 
 
   }
 
-
-
   render() {
     // if ( validMove(potentialDirection) ) {
       // document.getElementById(r.stringCoordinates()).textContent = r.name
+
       var playerDiv = document.getElementById(Evolution.currentPlayer.stringCoordinates())
 
-
-
-      // ADD this.imageURL to player class
-      // let imageElement = document.createElement('img')
-      // imageElement.classList.add('cellImage')
-      //
-      // var imageName
         switch(this.power) {
           case 0:
             this.imageURL = 'egg/egg4.png'
@@ -186,6 +169,7 @@ class Player {
           break;
           case 2:
             this.imageURL = 'dinosaur/dinosaur4.png'
+          break;
           case 3:
             this.imageURL = 'dinosaur/dinosaur3.png'
           break;
@@ -193,8 +177,19 @@ class Player {
 
         playerDiv.style.backgroundColor = Evolution.currentPlayer.color
         playerDiv.getElementsByClassName('cellImage')[0].setAttribute('src', 'images/' + this.imageURL);
+
+
     // }
 
+  }
+
+  won() {
+    if (Evolution.currentPlayer.power == 3) {
+      var audioElement = document.createElement('audio');
+      audioElement.setAttribute('src', 'audio/champions.mp3');
+      audioElement.play();
+      return true
+    }
   }
 
 }
