@@ -15,8 +15,6 @@ body {
   background-color: #FFFFFF;
   bottom: 0;
   height: 80vw;
-
-
   left: 0;
   margin-bottom: auto;
   margin-left: auto;
@@ -100,5 +98,5 @@ body {
 
 }
 
-.grow { transition: all .2s ease-in-out; }
-.grow:hover { transform: scale(8); }
+/*.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.2); }*/
