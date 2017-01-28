@@ -75,6 +75,8 @@ class Player {
   // paramater will be something in this array ['left', 'right', 'up', 'down']
   move(validDirection) {
 
+    mariomoveElement.load();
+
     // empty the old div
     this.emptyDiv(this.stringCoordinates())
 
@@ -92,6 +94,9 @@ class Player {
         this.coordinates = [this.coordinates[0], this.coordinates[1] -1]
         break;
     }
+
+    mariomoveElement.play();
+
 
     this.render()
   }
@@ -195,6 +200,14 @@ class Player {
 }
 
 Player.count = 0;
+
+
+
+var mariomoveElement = document.createElement('audio');
+mariomoveElement.setAttribute('src', 'audio/mario-bounce.mp3');
+
+
+
 
 
 

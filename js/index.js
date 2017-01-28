@@ -83,6 +83,7 @@ function renderBoard(columns, rows) {
     // set the top and left coordinates of each div
     cellElement.style.top = (iterator % rows) * cellBoxHeight + 'px'
     cellElement.style.left = (Math.floor(iterator / rows) * cellBoxWidth) + 'px'
+    cellElement.classList.add('grow')
 
 
     // create a new image element
@@ -210,6 +211,20 @@ function ListenForResize(columns, rows) {
 renderPage(columns, rows)
 //renderBoard(columns, rows)
 ListenForResize(columns, rows)
+
+// prevent default behavior to prevent iphone dragging and bouncing
+// http://www.quirksmode.org/mobile/default.html
+function PreventDefaultforMobile() {
+  document.ontouchmove = function (event) {
+    event.preventDefault();
+  };
+}
+
+PreventDefaultforMobile()
+
+
+
+
 
 r = new Player()
 r.name = "Rob"
