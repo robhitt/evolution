@@ -14,7 +14,7 @@ body {
 #board {
   background-color: #FFFFFF;
   bottom: 0;
-  height: 80vw;
+  height: 50vw;
   left: 0;
   margin-bottom: auto;
   margin-left: auto;
@@ -23,7 +23,7 @@ body {
   position: absolute;
   right: 0;
   top: 0;
-  width: 80vw;
+  width: 50vw;
   /*z-index: 1;*/
 }
 

@@ -1,6 +1,10 @@
 $(document).ready(function() {
+
   $('#board').fadeOut(1000)
   $('#board').fadeIn(3500)
+  var introMusic = document.createElement('audio');
+  introMusic.setAttribute('src', 'audio/pac-man-intro.mp3');
+  introMusic.play();
 
   // SET CONFIG VARIABLES
   Page.columns = 5

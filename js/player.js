@@ -38,7 +38,7 @@ class Player {
       case 'left':
         if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('leftRow')) {
           // alert('Moving left is not valid, please try again')
-
+          marioWallMoveElement.play();
           Evolution.flash(potentialDirection)
           return false
         }
@@ -46,6 +46,7 @@ class Player {
 
       case 'right':
         if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('rightRow')) {
+          marioWallMoveElement.play();
           Evolution.flash(potentialDirection)
           return false
         }
@@ -53,6 +54,7 @@ class Player {
 
       case 'up':
         if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('topRow')) {
+          marioWallMoveElement.play();
           Evolution.flash(potentialDirection)
           return false
         }
@@ -60,6 +62,7 @@ class Player {
 
       case 'down':
         if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('bottomRow')) {
+          marioWallMoveElement.play();
           Evolution.flash(potentialDirection)
           return false
         }
@@ -96,7 +99,6 @@ class Player {
     }
 
     mariomoveElement.play();
-
 
     this.render()
   }
@@ -206,6 +208,8 @@ Player.count = 0;
 var mariomoveElement = document.createElement('audio');
 mariomoveElement.setAttribute('src', 'audio/mario-bounce.mp3');
 
+var marioWallMoveElement = document.createElement('audio');
+marioWallMoveElement.setAttribute('src', 'audio/wall-bump.mp3');
 
 
 
