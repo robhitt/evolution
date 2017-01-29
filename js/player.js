@@ -15,6 +15,15 @@ class Player {
     }
   }
 
+  // newCurrentPlayer()  {
+  //
+  //   if (this.playerId % 2 == 0) {
+  //     this = Object.call(where this.playerId === 2)
+  //   } else {
+  //     this = Object.call(where this.playerId === 1)
+  //   }
+  // }
+
   getName() {
     return prompt("Please enter your name:", "name here");
   }
@@ -34,12 +43,14 @@ class Player {
   // paramater will be something in this array ['left', 'right', 'up', 'down']
   validMove(potentialDirection) {
 
+    marioWallMoveElement.load();
+
     switch (potentialDirection) {
       case 'left':
         if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('leftRow')) {
           // alert('Moving left is not valid, please try again')
           marioWallMoveElement.play();
-          Evolution.flash(potentialDirection)
+          // Evolution.flash(potentialDirection)
           return false
         }
         break;
@@ -47,7 +58,7 @@ class Player {
       case 'right':
         if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('rightRow')) {
           marioWallMoveElement.play();
-          Evolution.flash(potentialDirection)
+          // Evolution.flash(potentialDirection)
           return false
         }
         break;
@@ -55,7 +66,7 @@ class Player {
       case 'up':
         if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('topRow')) {
           marioWallMoveElement.play();
-          Evolution.flash(potentialDirection)
+          // Evolution.flash(potentialDirection)
           return false
         }
         break;
@@ -63,7 +74,7 @@ class Player {
       case 'down':
         if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('bottomRow')) {
           marioWallMoveElement.play();
-          Evolution.flash(potentialDirection)
+          // Evolution.flash(potentialDirection)
           return false
         }
         break;
@@ -86,15 +97,19 @@ class Player {
     switch (validDirection) {
       case 'left':
         this.coordinates = [this.coordinates[0] - 1, this.coordinates[1]]
+
         break;
       case 'right':
         this.coordinates = [this.coordinates[0] + 1, this.coordinates[1]]
+
         break;
       case 'up':
         this.coordinates = [this.coordinates[0], this.coordinates[1] + 1]
+
         break;
       case 'down':
         this.coordinates = [this.coordinates[0], this.coordinates[1] -1]
+
         break;
     }
 
@@ -202,6 +217,7 @@ class Player {
 }
 
 Player.count = 0;
+
 
 
 
