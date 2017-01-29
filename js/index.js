@@ -8,6 +8,9 @@ $(document).ready(function() {
 
   var page = new Page
   var board = new Board
+  // board.createMushroom('[3,4]')
+  // board.createMushroom('[2,4]')
+  // board.createMushroom('[5,3]')
 
   page.board = board
 
