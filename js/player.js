@@ -15,14 +15,6 @@ class Player {
     }
   }
 
-  // newCurrentPlayer()  {
-  //
-  //   if (this.playerId % 2 == 0) {
-  //     this = Object.call(where this.playerId === 2)
-  //   } else {
-  //     this = Object.call(where this.playerId === 1)
-  //   }
-  // }
 
   getName() {
     return prompt("Please enter your name:", "name here");
