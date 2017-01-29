@@ -5,6 +5,10 @@ class Board {
     this.setSizeVariables()
     this.generateCells()
 
+    
+
+
+
   }
 
   setSizeVariables() {

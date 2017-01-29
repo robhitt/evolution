@@ -20,6 +20,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
+  max-height: 80vh;
   position: absolute;
   right: 0;
   top: 0;
@@ -97,6 +98,18 @@ body {
   display: block;
 
 }
+
+.player-image {
+  width: 100%;
+  top: 0;
+  height: 100%;
+  bottom: 1px;
+  left: 0;
+  position: absolute;
+  display: block;
+}
+
+
 
 /*.grow { transition: all .2s ease-in-out; }
 .grow:hover { transform: scale(1.2); }*/

@@ -13,6 +13,9 @@ class Player {
       this.coordinates = [1,1]
       this.color = '#800080'
     }
+
+    //this.createPlayerDiv()
+
   }
 
   getName() {
@@ -28,18 +31,19 @@ class Player {
     var cellToEmpty = document.getElementById(coordinates)
     cellToEmpty.style.backgroundColor = 'white'
     cellToEmpty.getElementsByClassName('cellImage')[0].setAttribute('src', 'images/clear.png');
-
   }
 
   // paramater will be something in this array ['left', 'right', 'up', 'down']
   validMove(potentialDirection) {
+
+    marioWallMoveElement.load();
 
     switch (potentialDirection) {
       case 'left':
         if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('leftRow')) {
           // alert('Moving left is not valid, please try again')
           marioWallMoveElement.play();
-          Evolution.flash(potentialDirection)
+          //Evolution.flash(potentialDirection)
           return false
         }
         break;
@@ -47,7 +51,7 @@ class Player {
       case 'right':
         if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('rightRow')) {
           marioWallMoveElement.play();
-          Evolution.flash(potentialDirection)
+          //Evolution.flash(potentialDirection)
           return false
         }
         break;
@@ -55,7 +59,7 @@ class Player {
       case 'up':
         if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('topRow')) {
           marioWallMoveElement.play();
-          Evolution.flash(potentialDirection)
+          //Evolution.flash(potentialDirection)
           return false
         }
         break;
@@ -63,7 +67,7 @@ class Player {
       case 'down':
         if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('bottomRow')) {
           marioWallMoveElement.play();
-          Evolution.flash(potentialDirection)
+          //Evolution.flash(potentialDirection)
           return false
         }
         break;
@@ -97,6 +101,9 @@ class Player {
         this.coordinates = [this.coordinates[0], this.coordinates[1] -1]
         break;
     }
+
+
+    Evolution.newCurrentPlayer()
 
     mariomoveElement.play();
 
@@ -165,7 +172,7 @@ class Player {
     // if ( validMove(potentialDirection) ) {
       // document.getElementById(r.stringCoordinates()).textContent = r.name
 
-      var playerDiv = document.getElementById(Evolution.currentPlayer.stringCoordinates())
+      var playerDiv = document.getElementById(this.stringCoordinates())
 
         switch(this.power) {
           case 0:
@@ -182,13 +189,49 @@ class Player {
           break;
         }
 
-        playerDiv.style.backgroundColor = Evolution.currentPlayer.color
+        playerDiv.style.backgroundColor = this.color
         playerDiv.getElementsByClassName('cellImage')[0].setAttribute('src', 'images/' + this.imageURL);
 
 
     // }
 
   }
+
+  createPlayerDiv() {
+    var playerDiv = document.createElement('div')
+    playerDiv.setAttribute('id', this.playerId)
+    playerDiv.classList.add('player')
+
+    var imageElement = document.createElement('img')
+    imageElement.classList.add('player-image')
+    imageElement.setAttribute('src', 'images/' + this.imageURL)
+
+    playerDiv.appendChild(imageElement)
+
+
+    this.playerDiv = playerDiv
+
+
+
+
+
+    // var x = document.getElementById(this.stringCoordinates())
+    // x.appendChild(playerDiv)
+    //
+    // var self = this
+    //
+    // setTimeout(function() {
+    //
+    //   self.move('left')
+    //   document.getElementById(self.stringCoordinates()).appendChild(playerDiv)
+    //
+    // }, 2000)
+
+  }
+
+
+
+
 
   won() {
     if (Evolution.currentPlayer.power == 3) {
