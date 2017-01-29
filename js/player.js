@@ -40,7 +40,6 @@ class Player {
     switch (potentialDirection) {
       case 'left':
         if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('leftRow')) {
-          // alert('Moving left is not valid, please try again')
           marioWallMoveElement.play();
           // Evolution.flash(potentialDirection)
           return false
