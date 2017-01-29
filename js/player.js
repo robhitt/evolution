@@ -15,9 +15,7 @@ class Player {
     }
 
     //this.createPlayerDiv()
-
   }
-
 
   getName() {
     return prompt("Please enter your name:", "name here");
@@ -90,7 +88,6 @@ class Player {
     switch (validDirection) {
       case 'left':
         this.coordinates = [this.coordinates[0] - 1, this.coordinates[1]]
-
         break;
       case 'right':
         this.coordinates = [this.coordinates[0] + 1, this.coordinates[1]]
@@ -106,12 +103,21 @@ class Player {
         break;
     }
 
-
-    Evolution.newCurrentPlayer()
+    var elementInfo = document.getElementById(this.stringCoordinates())
+    if (elementInfo.getElementsByClassName('mushroom').length === 1) {
+      this.power += 1
+      var elementToRemove = elementInfo.getElementsByClassName('mushroom')[0]
+      elementToRemove.remove()
+    }
 
     mariomoveElement.play();
-
     this.render()
+    this.won()
+    Evolution.newCurrentPlayer()
+
+
+
+
   }
 
 
@@ -173,9 +179,6 @@ class Player {
   }
 
   render() {
-    // if ( validMove(potentialDirection) ) {
-      // document.getElementById(r.stringCoordinates()).textContent = r.name
-
       var playerDiv = document.getElementById(this.stringCoordinates())
 
         switch(this.power) {
@@ -189,16 +192,12 @@ class Player {
             this.imageURL = 'dinosaur/dinosaur4.png'
           break;
           case 3:
-            this.imageURL = 'dinosaur/dinosaur3.png'
+            this.imageURL = 'winner.gif'
           break;
         }
 
         playerDiv.style.backgroundColor = this.color
         playerDiv.getElementsByClassName('cellImage')[0].setAttribute('src', 'images/' + this.imageURL);
-
-
-    // }
-
   }
 
   createPlayerDiv() {
@@ -212,12 +211,7 @@ class Player {
 
     playerDiv.appendChild(imageElement)
 
-
     this.playerDiv = playerDiv
-
-
-
-
 
     // var x = document.getElementById(this.stringCoordinates())
     // x.appendChild(playerDiv)
@@ -233,34 +227,23 @@ class Player {
 
   }
 
-
-
-
-
   won() {
     if (Evolution.currentPlayer.power == 3) {
       var audioElement = document.createElement('audio');
       audioElement.setAttribute('src', 'audio/champions.mp3');
+      audioElement.load();
       audioElement.play();
+      // alert('Congratulations you are immortal, you\'ve won')
       return true
     }
   }
-
 }
 
+// Outside of the class
 Player.count = 0;
-
-
-
 
 var mariomoveElement = document.createElement('audio');
 mariomoveElement.setAttribute('src', 'audio/mario-bounce.mp3');
 
 var marioWallMoveElement = document.createElement('audio');
 marioWallMoveElement.setAttribute('src', 'audio/wall-bump.mp3');
-
-
-
-
-
-//Game.playerTurn [1,2,3,4,5]

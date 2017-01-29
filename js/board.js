@@ -4,11 +4,9 @@ class Board {
     this.boardElement = document.getElementById('board')
     this.setSizeVariables()
     this.generateCells()
-
-    
-
-
-
+    this.mushroomsArr = this.mushrooms()
+    this.populateMushroomsOnBoard()
+    this.createMushroom = this.createMushroom
   }
 
   setSizeVariables() {
@@ -93,5 +91,41 @@ class Board {
       cellBoxElements[i].style.left = ( Math.floor(i / Page.rows) * this.cellBoxWidth) + 'px';
       i++;
     };
+  }
+
+  createMushroom(coordinates) {
+    var mushroomElement = document.createElement('div')
+    mushroomElement.classList.add('mushroom')
+
+    var imageElement = document.createElement('img')
+    imageElement.classList.add('mushroom-image')
+    imageElement.setAttribute('src', 'images/mushrooms/mushroom1.png')
+
+    mushroomElement.appendChild(imageElement)
+
+    document.getElementById(coordinates).appendChild(mushroomElement)
+  }
+
+  populateMushroomsOnBoard() {
+
+    var that = this
+    var mushroomArray = this.mushroomsArr
+    mushroomArray.forEach (function (element, index, array) {
+      that.createMushroom(element)
+    })
+  }
+
+  mushrooms() {
+    let arr =
+      [
+        [ "[3,5]", "[1,4]", "[2,4]", "[2,2]", "[5,2]", "[1,3]", "[4,5]"],
+        [ "[3,5]", "[1,4]", "[2,4]", "[1,2]", "[5,2]", "[1,3]", "[4,5]"],
+        [ "[2,5]", "[3,4]", "[2,4]", "[2,2]", "[5,2]", "[1,3]", "[4,5]"],
+        [ "[4,5]", "[3,4]", "[2,4]", "[2,2]", "[5,2]", "[1,3]", "[3,5]"],
+        [ "[2,5]", "[3,4]", "[5,4]", "[2,2]", "[5,2]", "[1,3]", "[4,5]"]
+       ]
+
+    var randomArrayIndex = Math.floor(Math.random() * arr.length)
+    return arr[randomArrayIndex]
   }
 }
