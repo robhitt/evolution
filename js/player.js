@@ -43,11 +43,7 @@ class Player {
       case 'left':
         if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('leftRow')) {
           marioWallMoveElement.play();
-<<<<<<< HEAD
-          //Evolution.flash(potentialDirection)
-=======
           // Evolution.flash(potentialDirection)
->>>>>>> b0a34bfdc3d2145531ef6c61ee3991d0b8903e43
           return false
         }
         break;
@@ -55,11 +51,7 @@ class Player {
       case 'right':
         if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('rightRow')) {
           marioWallMoveElement.play();
-<<<<<<< HEAD
-          //Evolution.flash(potentialDirection)
-=======
           // Evolution.flash(potentialDirection)
->>>>>>> b0a34bfdc3d2145531ef6c61ee3991d0b8903e43
           return false
         }
         break;
@@ -67,11 +59,7 @@ class Player {
       case 'up':
         if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('topRow')) {
           marioWallMoveElement.play();
-<<<<<<< HEAD
-          //Evolution.flash(potentialDirection)
-=======
           // Evolution.flash(potentialDirection)
->>>>>>> b0a34bfdc3d2145531ef6c61ee3991d0b8903e43
           return false
         }
         break;
@@ -79,11 +67,7 @@ class Player {
       case 'down':
         if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('bottomRow')) {
           marioWallMoveElement.play();
-<<<<<<< HEAD
-          //Evolution.flash(potentialDirection)
-=======
           // Evolution.flash(potentialDirection)
->>>>>>> b0a34bfdc3d2145531ef6c61ee3991d0b8903e43
           return false
         }
         break;
