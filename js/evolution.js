@@ -10,7 +10,6 @@ class Evolution {
     this.welcome()
     this.keyPress()
 
-
   }
 
   welcome() {

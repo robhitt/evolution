@@ -127,10 +127,27 @@ class Player {
   won() {
     if (Evolution.currentPlayer.power == 3) {
       var audioElement = document.createElement('audio');
+
       audioElement.setAttribute('src', 'audio/champions.mp3');
       audioElement.load();
       audioElement.play();
+
+      // var winnerElement = document.getElementById('win-box')
+      // winnerElement.style.display = "block"
       // alert('Congratulations you are immortal, you\'ve won')
+
+      // var winHeight = window.innerHeight
+      // var winWidth = window.innerWidth
+      //
+      // $('#win-box img').
+
+
+      $('#win-box-container').fadeTo(1000, 1, function() {
+        $('#win-box').fadeTo(1000, 1, function() {
+        })
+      })
+
+
       return true
     }
   }
