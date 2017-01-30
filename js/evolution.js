@@ -9,11 +9,6 @@ class Evolution {
     // and add them to Evolution.allPlayers
     this.welcome()
 
-
-
-
-
-
   }
 
   welcome() {
@@ -21,6 +16,10 @@ class Evolution {
     Prompt.render('Players, enter your names:','addPlayertoGame')
 
   }
+
+
+
+
 }
 
 // Outside of Class
@@ -47,22 +46,20 @@ Evolution.flash = function (potentialDirection) {
   })
 }
 
+// this outside of class or instance because of the Prompt class
 var addPlayertoGame = function(player_names) {
-
 
   player_names.forEach (function(name) {
 
     var newPlayer = new Player
     newPlayer.name = name
 
-
     Evolution.allPlayers.push(newPlayer)
-
-
   })
 
   Evolution.currentPlayer = Evolution.allPlayers[0]
 
+  // we should move this
   Evolution.currentPlayer.keyPress()
 
   Evolution.allPlayers.forEach (function (player) {
@@ -71,7 +68,4 @@ var addPlayertoGame = function(player_names) {
 
 //  $('#board').fadeOut(1000)
   $('#board').fadeIn(3500)
-
-
-
 }

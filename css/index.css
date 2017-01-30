@@ -20,7 +20,8 @@ body {
   left: 0;
   margin-left: auto;
   margin-right: auto;
-  max-height: 80vh;
+  max-height: 80%;
+  max-width: 98%;
   position: absolute;
   right: 0;
   top: 17vh;
@@ -114,6 +115,12 @@ body {
 
 }
 
+.player {
+  height: 100%;
+  width: 100%;
+
+}
+
 .player-image {
   width: 100%;
   top: 0;
@@ -133,5 +140,5 @@ body {
   position: absolute;
   display: block;
 }
-/*.grow { transition: all .2s ease-in-out; }
-.grow:hover { transform: scale(1.2); }*/
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(2); }
