@@ -2,11 +2,13 @@ class Board {
   constructor() {
 
     this.boardElement = document.getElementById('board')
+    this.createMushroom = this.createMushroom
+
     this.setSizeVariables()
     this.generateCells()
+
     this.mushroomsArr = this.mushrooms()
     this.populateMushroomsOnBoard()
-    this.createMushroom = this.createMushroom
   }
 
   setSizeVariables() {
@@ -19,8 +21,8 @@ class Board {
     this.boardHeight = parseInt(computedBoardElementStyle.height)
 
     // calculate the the cells' width & height
-    this.cellBoxWidth = this.boardWidth / Page.columns
-    this.cellBoxHeight = this.boardHeight / Page.rows
+    this.cellBoxWidth = this.boardWidth / Board.columns
+    this.cellBoxHeight = this.boardHeight / Board.rows
   }
 
   createCell(position, iterator) {
@@ -29,32 +31,20 @@ class Board {
 
     cellElement.setAttribute('id', position)
     cellElement.classList.add('cell')
-    cellElement.classList.add('grow')
     cellElement.style.width = this.cellBoxWidth + 'px'
     cellElement.style.height = this.cellBoxHeight + 'px'
     // this is to demonstrate and display the id of the div
     // cellElement.textContent = position.toString()
 
     // conditional booleans to add edge classes
-    var toprow = (iterator % Page.rows === 0)
-    var bottomrow = (iterator % Page.rows === (Page.rows - 1))
-    var leftrow = (Math.floor(iterator / Page.rows) === 0)
-    var rightrow = (Math.floor(iterator / Page.rows) === (Page.columns - 1))
-
-    if (toprow) {cellElement.classList.add('topRow')}
-    if (bottomrow) {cellElement.classList.add('bottomRow')}
-    if (leftrow) {cellElement.classList.add('leftRow')}
-    if (rightrow) {cellElement.classList.add('rightRow')}
+    if (iterator % Board.rows === 0) {cellElement.classList.add('topRow')}
+    if (iterator % Board.rows === (Board.rows - 1)) {cellElement.classList.add('bottomRow')}
+    if (Math.floor(iterator / Board.rows) === 0) {cellElement.classList.add('leftRow')}
+    if (Math.floor(iterator / Board.rows) === (Board.columns - 1)) {cellElement.classList.add('rightRow')}
 
     // set the top and left coordinates of each div
-    cellElement.style.top = (iterator % Page.rows) * this.cellBoxHeight + 'px'
-    cellElement.style.left = (Math.floor(iterator / Page.rows) * this.cellBoxWidth) + 'px'
-
-    // create a new image element to append as child to cell
-    var imageElement = document.createElement('img')
-    imageElement.classList.add('cellImage')
-    imageElement.setAttribute('src', `images/clear.png`);
-    cellElement.appendChild(imageElement)
+    cellElement.style.top = (iterator % Board.rows) * this.cellBoxHeight + 'px'
+    cellElement.style.left = (Math.floor(iterator / Board.rows) * this.cellBoxWidth) + 'px'
 
     this.boardElement.appendChild(cellElement)
   }
@@ -63,13 +53,13 @@ class Board {
 
     this.boardElement.innerHTML = ''
     // i = 0 to total number of cells
-    for (var i = 0; i < Page.columns * Page.rows; i++) {
+    for (var i = 0; i < Board.columns * Board.rows; i++) {
 
       // createCell parameters:
-      // id: the numbered position on the grid
+      // i: the numbered position on the grid
       // position: y coordinate = rows - (i % rows)
       //           x coordinate = Math.floor(i / rows)
-      this.createCell(`[${1 + (Math.floor(i / Page.rows))},${Page.rows - (i % Page.rows)}]`, i)
+      this.createCell(`[${1 + (Math.floor(i / Board.rows))},${Board.rows - (i % Board.rows)}]`, i)
     }
   }
 
@@ -86,9 +76,9 @@ class Board {
 
       // position the cell in a grid
       // the row is equal to the remainder of i / rows
-      cellBoxElements[i].style.top = (i % Page.rows) * this.cellBoxHeight + 'px';
+      cellBoxElements[i].style.top = (i % Board.rows) * this.cellBoxHeight + 'px';
       //  // the column is equal to the quotient, rounded down
-      cellBoxElements[i].style.left = ( Math.floor(i / Page.rows) * this.cellBoxWidth) + 'px';
+      cellBoxElements[i].style.left = ( Math.floor(i / Board.rows) * this.cellBoxWidth) + 'px';
       i++;
     };
   }
@@ -99,7 +89,7 @@ class Board {
 
     var imageElement = document.createElement('img')
     imageElement.classList.add('mushroom-image')
-    imageElement.setAttribute('src', 'images/mushrooms/mushroom1.png')
+    imageElement.setAttribute('src', Board.mushroomURL)
 
     mushroomElement.appendChild(imageElement)
 
@@ -109,8 +99,8 @@ class Board {
   populateMushroomsOnBoard() {
 
     var that = this
-    var mushroomArray = this.mushroomsArr
-    mushroomArray.forEach (function (element, index, array) {
+//    var mushroomArray = this.mushroomsArr
+    this.mushroomsArr.forEach (function (element, index, array) {
       that.createMushroom(element)
     })
   }
