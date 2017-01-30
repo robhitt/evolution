@@ -1,21 +1,26 @@
 $(document).ready(function() {
 
   // SET CONFIG VARIABLES
-  Page.columns = 5
-  Page.rows = 5
+  Board.columns = 5
+  Board.rows = 5
+
+  Board.mushroomURL = 'images/mushrooms/mushroom1.png'
 
   Player.power_urls = [ 'images/egg/egg4.png',
                         'images/chicken/chicken6.png',
                         'images/dinosaur/dinosaur4.png',
                         'images/winner.gif']
 
+  Player.colors = ['#00FF00', '#800080']
+  Player.startingCoordinates = [ [1,1], [5,5] ]
+
   var page = new Page
   var board = new Board
-
   page.board = board
 
   var game = new Evolution
-  var mobile_movements = new MobileMovements
+
+  new MobileMovements
 
 console.log("==========")
 console.log("Made with care by: robhitt@gmail.com or andrew.nease.code@gmail.com")

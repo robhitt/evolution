@@ -8,6 +8,7 @@ class Evolution {
     // this function will capture user input and create new players
     // and add them to Evolution.allPlayers
     this.welcome()
+    this.keyPress()
 
   }
 
@@ -16,6 +17,99 @@ class Evolution {
     Prompt.render('Players, enter your names:','addPlayertoGame')
 
   }
+
+
+  keyPress() {
+    document.addEventListener('keydown', function(event) {
+
+      console.log('key pressed')
+
+      switch (event.keyCode) {
+        case 37: // Left
+          if (Evolution.currentPlayer.validMove('left')) {
+            Evolution.currentPlayer.move('left')
+          }
+          // if (Evolution.allPlayers[1].validMove('left')) {
+          //   Evolution.allPlayers[1].move('left')
+          // }
+          break;
+        case 39: // Right
+          if (Evolution.currentPlayer.validMove('right')) {
+            Evolution.currentPlayer.move('right')
+          }
+          // if (Evolution.allPlayers[1].validMove('right')) {
+          //   Evolution.allPlayers[1].move('right')
+          // }
+          break;
+        case 38: // Up
+          if (Evolution.currentPlayer.validMove('up')) {
+            Evolution.currentPlayer.move('up')
+          }
+          // if (Evolution.allPlayers[1].validMove('up')) {
+          //   Evolution.allPlayers[1].move('up')
+          // }
+          break;
+        case 40: // Down
+          if (Evolution.currentPlayer.validMove('down')) {
+            Evolution.currentPlayer.move('down')
+          }
+          // if (Evolution.allPlayers[1].validMove('down')) {
+          //   Evolution.allPlayers[1].move('down')
+          // }
+          break;
+        case 65: // A
+          if (Evolution.currentPlayer.validMove('left')) {
+            Evolution.currentPlayer.move('left')
+          }
+          // if (Evolution.allPlayers[0].validMove('left')) {
+          //   Evolution.allPlayers[0].move('left')
+          // }
+          break;
+        case 83: // S
+          if (Evolution.currentPlayer.validMove('down')) {
+            Evolution.currentPlayer.move('down')
+          }
+          // if (Evolution.allPlayers[0].validMove('down')) {
+          //   Evolution.allPlayers[0].move('down')
+          // }
+          break;
+        case 68: // D
+          if (Evolution.currentPlayer.validMove('right')) {
+            Evolution.currentPlayer.move('right')
+          }
+          // if (Evolution.allPlayers[0].validMove('right')) {
+          //   Evolution.allPlayers[0].move('right')
+          // }
+          break;
+        case 87: // W
+          if (Evolution.currentPlayer.validMove('up')) {
+            Evolution.currentPlayer.move('up')
+          }
+          // if (Evolution.allPlayers[0].validMove('up')) {
+          //   Evolution.allPlayers[0].move('up')
+          // }
+          break;
+        case 81: // Q
+          // Rob case
+          console.log('q')
+          break;
+        case 90: // Z
+          // Rob case
+          console.log('z')
+          break;
+        case 191: // ?
+          // Rob case
+          console.log('?')
+          break;
+      }
+
+    });
+
+
+  }
+
+
+
 }
 
 // Outside of Class
@@ -42,23 +136,18 @@ Evolution.flash = function (potentialDirection) {
   })
 }
 
+// this outside of class or instance because of the Prompt class
 var addPlayertoGame = function(player_names) {
-
 
   player_names.forEach (function(name) {
 
     var newPlayer = new Player
     newPlayer.name = name
 
-
     Evolution.allPlayers.push(newPlayer)
-
-
   })
 
   Evolution.currentPlayer = Evolution.allPlayers[0]
-
-  Evolution.currentPlayer.keyPress()
 
   Evolution.allPlayers.forEach (function (player) {
     player.render()
@@ -66,7 +155,4 @@ var addPlayertoGame = function(player_names) {
 
 //  $('#board').fadeOut(1000)
   $('#board').fadeIn(3500)
-
-
-
 }

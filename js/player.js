@@ -2,16 +2,11 @@ class Player {
 
   constructor() {
     this.playerId = Evolution.allPlayers.length
-//    this.name = this.getName()
+
     this.power = 0
 
-    if (this.playerId === 0) {
-      this.coordinates = [1,1]
-      this.color = '#00FF00'
-    } else {
-      this.coordinates = [5,5]
-      this.color = '#800080'
-    }
+    this.color = Player.colors[this.playerId]
+    this.coordinates = Player.startingCoordinates[this.playerId]
 
     this.createPlayerDiv()
   }
@@ -30,7 +25,7 @@ class Player {
 
     switch (potentialDirection) {
       case 'left':
-        if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('leftRow')) {
+        if (document.getElementById(this.stringCoordinates()).classList.contains('leftRow')) {
           marioWallMoveElement.play();
           // Evolution.flash(potentialDirection)
           return false
@@ -38,7 +33,7 @@ class Player {
         break;
 
       case 'right':
-        if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('rightRow')) {
+        if (document.getElementById(this.stringCoordinates()).classList.contains('rightRow')) {
           marioWallMoveElement.play();
           // Evolution.flash(potentialDirection)
           return false
@@ -46,7 +41,7 @@ class Player {
         break;
 
       case 'up':
-        if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('topRow')) {
+        if (document.getElementById(this.stringCoordinates()).classList.contains('topRow')) {
           marioWallMoveElement.play();
           // Evolution.flash(potentialDirection)
           return false
@@ -54,7 +49,7 @@ class Player {
         break;
 
       case 'down':
-        if (document.getElementById(Evolution.currentPlayer.stringCoordinates()).classList.contains('bottomRow')) {
+        if (document.getElementById(this.stringCoordinates()).classList.contains('bottomRow')) {
           marioWallMoveElement.play();
           // Evolution.flash(potentialDirection)
           return false
@@ -95,7 +90,7 @@ class Player {
       marioCoinElement.load();
       marioCoinElement.play();
 
-      this.power += 1
+      if (this.power < 3) { this.power += 1 }
 
       this.playerDiv.childNodes[0].setAttribute('src', Player.power_urls[this.power]) // change player's image
       playerPositionDiv.getElementsByClassName('mushroom')[0].remove() // remove mushroom element
@@ -108,60 +103,6 @@ class Player {
   }
 
 
-  keyPress() {
-    document.addEventListener('keydown', function(event) {
-
-      console.log('key pressed')
-
-    if(event.keyCode == 37) { // Left
-      if (Evolution.currentPlayer.validMove('left')) {
-        Evolution.currentPlayer.move('left')
-      }
-    }
-    else if(event.keyCode == 39) { // Right
-      if (Evolution.currentPlayer.validMove('right')) {
-        Evolution.currentPlayer.move('right')
-      }
-    }
-    else if(event.keyCode == 38) { // Up
-      if (Evolution.currentPlayer.validMove('up')) {
-        Evolution.currentPlayer.move('up')
-      }
-    }
-    else if(event.keyCode == 40) { // Down
-      if (Evolution.currentPlayer.validMove('down')) {
-        Evolution.currentPlayer.move('down')
-      }
-
-    }
-    else if(event.keyCode == 65) { // A
-      if (Evolution.currentPlayer.validMove('left')) {
-        Evolution.currentPlayer.move('left')
-      }
-    }
-    else if(event.keyCode == 83) { // S
-      if (Evolution.currentPlayer.validMove('down')) {
-        Evolution.currentPlayer.move('down')
-      }
-    }
-    else if(event.keyCode == 68) { // D
-      if (Evolution.currentPlayer.validMove('right')) {
-        Evolution.currentPlayer.move('right')
-      }
-    }
-    else if(event.keyCode == 87) { // W
-      if (Evolution.currentPlayer.validMove('up')) {
-        Evolution.currentPlayer.move('up')
-      }
-    }
-    // q = 81
-    // z = 90
-    // ? = 191
-
-  });
-
-
-  }
 
   render() {
     document.getElementById(this.stringCoordinates()).appendChild(this.playerDiv)
@@ -171,6 +112,8 @@ class Player {
     var playerDiv = document.createElement('div')
     playerDiv.setAttribute('id', this.playerId)
     playerDiv.classList.add('player')
+    playerDiv.classList.add('grow')
+    playerDiv.style.backgroundColor = this.color
 
     var imageElement = document.createElement('img')
     imageElement.classList.add('player-image')

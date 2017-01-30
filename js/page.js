@@ -12,7 +12,6 @@ class Page {
     this.preventDefaultforMobile()
     this.render()
     this.listenForResize()
-    var temp = new MobileMovements()
   }
 
   render() {
@@ -33,17 +32,16 @@ class Page {
 
   listenForResize() {
 
-    self = this
+    var that = this
     // listen for resize and orientation changes and make adjustments
-    // TO ADD: change positions and sizes of all boxes
     window.addEventListener('resize', function () {
 
-      self.mainWidth = window.innerWidth;
-      self.mainHeight = window.innerHeight;
+      that.mainWidth = window.innerWidth;
+      that.mainHeight = window.innerHeight;
 
-      self.render()
-      self.board.setSizeVariables()
-      self.board.repositionCells()
+      that.render()
+      that.board.setSizeVariables()
+      that.board.repositionCells()
 
     }, false); // bubbling phase
   }

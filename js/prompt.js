@@ -62,8 +62,10 @@ function CustomPrompt(){
 
 		dialogoverlay.style.display = "block";
 	  dialogoverlay.style.height = winH+"px";
-		dialogbox.style.left = (winW/2) - (550 * .5)+"px";
+
+//		dialogbox.style.left = (winW/2) - (550 * .5)+"px";
 //	  dialogbox.style.top = "100px";
+
 	  dialogbox.style.display = "block";
 
 		document.getElementById('dialogboxhead').innerHTML = "Welcome to Evolution";
