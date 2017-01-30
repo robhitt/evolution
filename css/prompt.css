@@ -18,6 +18,8 @@
 	top: 200px;
 	width:80%;
 	z-index: 10;
+	font-family: "Century Gothic", Times, serif;
+	font-size: 2.5em;
 }
 #dialogbox > div{ background:#FFF; margin:8px; }
 #dialogbox > div > #dialogboxhead{ background: #666; font-size:19px; padding:10px; color:#CCC;  display: flex; justify-content: space-around;}
@@ -25,9 +27,11 @@
 #dialogbox > div > #dialogboxbody{ background: #333; padding:20px; color:#FFF; display: flex; justify-content: center;}
 #dialogbox > div > #dialogboxfoot{ background: #666; padding:10px; text-align:right; }
 
-/*#intro-text {
-	display: block;
-}*/
+#intro-text {
+	margin: auto;
+	left: 2px;
+	right: 2px;
+}
 
 .input-box {
   display: inline-block;
