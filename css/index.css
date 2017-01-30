@@ -3,7 +3,8 @@ body {
 }
 
 #wrapper {
-  background-color: #ADD8E6;
+  /*background-color: #ADD8E6;*/
+  background: linear-gradient(#FFF, #FFF, #00FFFF, #FFF, #FFF);
   height: 100vh;
   width: 100vw;
   /*display: flex;
@@ -35,9 +36,9 @@ body {
 
 #logo-container {
   margin: auto;
-  max-width: 80vw;
+  max-width: 60vw;
   position: relative;
-  height: 30%;
+  /*height: 30%;*/
   top: 5%;
 }
 
