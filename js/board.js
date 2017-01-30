@@ -99,7 +99,7 @@ class Board {
   populateMushroomsOnBoard() {
 
     var that = this
-//    var mushroomArray = this.mushroomsArr
+
     this.mushroomsArr.forEach (function (element, index, array) {
       that.createMushroom(element)
     })
