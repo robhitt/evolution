@@ -90,7 +90,7 @@ class Player {
       marioCoinElement.load();
       marioCoinElement.play();
 
-      this.power += 1
+      if (this.power < 3) { this.power += 1 }
 
       this.playerDiv.childNodes[0].setAttribute('src', Player.power_urls[this.power]) // change player's image
       playerPositionDiv.getElementsByClassName('mushroom')[0].remove() // remove mushroom element
