@@ -1,20 +1,19 @@
 class Player {
 
   constructor() {
-    this.playerId = Player.count += 1
+    this.playerId = Evolution.allPlayers.length
 //    this.name = this.getName()
     this.power = 0
-    this.imageURL = 'egg/egg4.png'
 
-    if (this.playerId === 1) {
-      this.coordinates = [5,5]
+    if (this.playerId === 0) {
+      this.coordinates = [1,1]
       this.color = '#00FF00'
     } else {
-      this.coordinates = [1,1]
+      this.coordinates = [5,5]
       this.color = '#800080'
     }
 
-    //this.createPlayerDiv()
+    this.createPlayerDiv()
   }
 
   getName() {
@@ -25,16 +24,8 @@ class Player {
       return `[${this.coordinates.toString()}]`
   }
 
-  emptyDiv(coordinates) {
-  //  document.getElementById(coordinates).textContent = " "
-    var cellToEmpty = document.getElementById(coordinates)
-    cellToEmpty.style.backgroundColor = 'white'
-    cellToEmpty.getElementsByClassName('cellImage')[0].setAttribute('src', 'images/clear.png');
-  }
-
-  // paramater will be something in this array ['left', 'right', 'up', 'down']
+  // parameter will be something in this array ['left', 'right', 'up', 'down']
   validMove(potentialDirection) {
-
     marioWallMoveElement.load();
 
     switch (potentialDirection) {
@@ -76,14 +67,10 @@ class Player {
   }
 
 
-
   // paramater will be something in this array ['left', 'right', 'up', 'down']
   move(validDirection) {
 
     mariomoveElement.load();
-
-    // empty the old div
-    this.emptyDiv(this.stringCoordinates())
 
     switch (validDirection) {
       case 'left':
@@ -91,38 +78,33 @@ class Player {
         break;
       case 'right':
         this.coordinates = [this.coordinates[0] + 1, this.coordinates[1]]
-
         break;
       case 'up':
         this.coordinates = [this.coordinates[0], this.coordinates[1] + 1]
-
         break;
       case 'down':
         this.coordinates = [this.coordinates[0], this.coordinates[1] -1]
-
         break;
     }
 
-    var elementInfo = document.getElementById(this.stringCoordinates())
-    if (elementInfo.getElementsByClassName('mushroom').length === 1) {
+    var playerPositionDiv = document.getElementById(this.stringCoordinates())
+
+    // if the player's location contains a mushroom...
+    if (playerPositionDiv.getElementsByClassName('mushroom').length === 1) {
 
       marioCoinElement.load();
       marioCoinElement.play();
 
-
       this.power += 1
-      var elementToRemove = elementInfo.getElementsByClassName('mushroom')[0]
-      elementToRemove.remove()
+
+      this.playerDiv.childNodes[0].setAttribute('src', Player.power_urls[this.power]) // change player's image
+      playerPositionDiv.getElementsByClassName('mushroom')[0].remove() // remove mushroom element
     }
 
     mariomoveElement.play();
     this.render()
-    this.won()
+    this.won() // check to see if current player has won
     Evolution.newCurrentPlayer()
-
-
-
-
   }
 
 
@@ -182,25 +164,7 @@ class Player {
   }
 
   render() {
-      var playerDiv = document.getElementById(this.stringCoordinates())
-
-        switch(this.power) {
-          case 0:
-            this.imageURL = 'egg/egg4.png'
-          break;
-          case 1:
-            this.imageURL = 'chicken/chicken6.png'
-          break;
-          case 2:
-            this.imageURL = 'dinosaur/dinosaur4.png'
-          break;
-          case 3:
-            this.imageURL = 'winner.gif'
-          break;
-        }
-
-        playerDiv.style.backgroundColor = this.color
-        playerDiv.getElementsByClassName('cellImage')[0].setAttribute('src', 'images/' + this.imageURL);
+    document.getElementById(this.stringCoordinates()).appendChild(this.playerDiv)
   }
 
   createPlayerDiv() {
@@ -210,24 +174,11 @@ class Player {
 
     var imageElement = document.createElement('img')
     imageElement.classList.add('player-image')
-    imageElement.setAttribute('src', 'images/' + this.imageURL)
+    imageElement.setAttribute('src', Player.power_urls[0])
 
     playerDiv.appendChild(imageElement)
 
     this.playerDiv = playerDiv
-
-    // var x = document.getElementById(this.stringCoordinates())
-    // x.appendChild(playerDiv)
-    //
-    // var self = this
-    //
-    // setTimeout(function() {
-    //
-    //   self.move('left')
-    //   document.getElementById(self.stringCoordinates()).appendChild(playerDiv)
-    //
-    // }, 2000)
-
   }
 
   won() {
@@ -241,9 +192,6 @@ class Player {
     }
   }
 }
-
-// Outside of the class
-Player.count = 0;
 
 var mariomoveElement = document.createElement('audio');
 mariomoveElement.setAttribute('src', 'audio/mario-bounce.mp3');
