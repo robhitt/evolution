@@ -111,17 +111,13 @@ Evolution.handleKeyDown = function(event) {
         console.log('z')
         break;
       }
-
-      var hornElement = document.createElement('audio');
-      hornElement.setAttribute('src', 'audio/horn.mp3');
-
-      var loseElement = document.createElement('audio');
-      loseElement.setAttribute('src', 'audio/lose-horn.mp3');
-
-
   };
 
+  var hornElement = document.createElement('audio');
+  hornElement.setAttribute('src', 'audio/horn.mp3');
 
+  var loseElement = document.createElement('audio');
+  loseElement.setAttribute('src', 'audio/lose-horn.mp3');
 
 
 
