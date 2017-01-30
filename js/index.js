@@ -24,7 +24,12 @@ $(document).ready(function() {
 
   MobileMovements.controlledplayerId = 0
 
+  Evolution.wintext = function (winner) {
 
+    var winstring = `Congratulations, ${winner}!`
+
+    return winstring
+  }
 
 
 console.log("==========")

@@ -188,10 +188,12 @@ class Player {
       //
       // $('#win-box img').
 
-      document.getElementById('win-text').textContent = `Congratulations, ${Evolution.currentPlayer.name}!`
+      document.getElementById('win-text').textContent = Evolution.wintext(Evolution.currentPlayer.name)
 
 
       $('#win-box-container').fadeTo(10000, 1, function() {
+        document.getElementById('win-text').classList.add('animate_me')
+
         $('#win-text').fadeTo(1000, 1, function() {
         })
       })

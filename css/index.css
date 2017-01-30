@@ -140,6 +140,20 @@ body {
   color: #00ffff;
 }
 
+.animate_me {
+
+  animation: 60s credits linear infinite;
+}
+
+@keyframes credits {
+  0% {
+    top: 100%;
+  }
+  100% {
+    top: -500%;
+  }
+}
+
 .cellImage {
   width: 100%;
   top: 0;
