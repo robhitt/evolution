@@ -129,6 +129,17 @@ body {
   min-height: 100%;
 }
 
+
+#win-text {
+  display: none;
+  position: fixed;
+  font-family: sans-serif;
+  font-size: 4em;
+  opacity: .6;
+  text-shadow: 5px 5px black;
+  color: #00ffff;
+}
+
 .cellImage {
   width: 100%;
   top: 0;
