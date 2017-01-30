@@ -2,13 +2,10 @@ class Player {
 
   constructor() {
     this.playerId = Evolution.allPlayers.length
-
     this.power = 0
-
     this.color = Player.colors[this.playerId]
     this.coordinates = Player.startingCoordinates[this.playerId]
-
-    this.createPlayerDiv()
+    // this.createPlayerDiv()
   }
 
   getName() {
@@ -22,6 +19,24 @@ class Player {
   // parameter will be something in this array ['left', 'right', 'up', 'down']
   validMove(potentialDirection) {
     marioWallMoveElement.load();
+
+    // var otherPlayerId
+    // var currentId = this.playerId
+    //
+    // if (currentId === 1) {
+    //   otherPlayerId = 0
+    // } else {
+    //   otherPlayerId = 1
+    // }
+    //
+    // var player1 = Evolution.allPlayers[currentId]
+    // var player2 = Evolution.allPlayers[otherPlayerId]
+    //
+    // if (player2.coordinates === potentialDirection) {
+    //   marioWallMoveElement.play();
+    //   return false
+    //   }
+
 
     switch (potentialDirection) {
       case 'left':
@@ -55,7 +70,34 @@ class Player {
           return false
         }
         break;
+    }
 
+    var futureCooridnates
+
+    switch (potentialDirection) {
+      case 'left':
+        futureCooridnates = [this.coordinates[0] - 1, this.coordinates[1]]
+        break;
+      case 'right':
+        futureCooridnates = [this.coordinates[0] + 1, this.coordinates[1]]
+        break;
+      case 'up':
+        futureCooridnates = [this.coordinates[0], this.coordinates[1] + 1]
+        break;
+      case 'down':
+        futureCooridnates = [this.coordinates[0], this.coordinates[1] -1]
+        break;
+    }
+
+    var futureStringCoordinates = `[${futureCooridnates.toString()}]`
+
+
+    if (document.getElementById(futureStringCoordinates).childNodes.length > 0 ) {
+      var futureBoxId = document.getElementById(futureStringCoordinates).childNodes[0].getAttribute('id')
+      if (futureBoxId === '0' || futureBoxId === '1') {
+        marioWallMoveElement.play();
+        return false;
+      }
     }
 
     return true
@@ -112,26 +154,31 @@ class Player {
     var playerDiv = document.createElement('div')
     playerDiv.setAttribute('id', this.playerId)
     playerDiv.classList.add('player')
-    playerDiv.classList.add('grow')
+    // playerDiv.classList.add('grow')
     playerDiv.style.backgroundColor = this.color
+
+    var nameElement = document.createElement('div')
+    nameElement.classList.add('player-name')
+    nameElement.textContent = this.name
 
     var imageElement = document.createElement('img')
     imageElement.classList.add('player-image')
     imageElement.setAttribute('src', Player.power_urls[0])
 
     playerDiv.appendChild(imageElement)
+    playerDiv.appendChild(nameElement)
 
     this.playerDiv = playerDiv
   }
 
   won() {
     if (Evolution.currentPlayer.power == 3) {
-      var audioElement = document.createElement('audio');
+      document.removeEventListener('keydown', Evolution.handleKeyDown)
 
+      var audioElement = document.createElement('audio');
       audioElement.setAttribute('src', 'audio/champions.mp3');
       audioElement.load();
       audioElement.play();
-
       // var winnerElement = document.getElementById('win-box')
       // winnerElement.style.display = "block"
       // alert('Congratulations you are immortal, you\'ve won')
@@ -142,9 +189,10 @@ class Player {
       // $('#win-box img').
 
 
-      $('#win-box-container').fadeTo(1000, 1, function() {
-        $('#win-box').fadeTo(1000, 1, function() {
-        })
+
+      $('#win-box-container').fadeTo(10000, 1, function() {
+        // $('#win-box').fadeTo(1000, 1, function() {
+        // })
       })
 
 

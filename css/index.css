@@ -4,7 +4,7 @@ body {
 
 #wrapper {
   /*background-color: #ADD8E6;*/
-  background: linear-gradient(#FFF, #FFF, #00FFFF, #FFF, #FFF);
+  background: linear-gradient(#FFF, #FFF, pink, #FFF);
   height: 100vh;
   width: 100vw;
   /*display: flex;
@@ -45,7 +45,7 @@ body {
 
 
 .cell {
-  opacity: .75;
+  opacity: 1;
   position: absolute;
   border: 1px grey solid;
   box-sizing: border-box;
@@ -109,7 +109,7 @@ body {
   position: fixed;
   height: 100vh;
   width: 100vw;
-  z-index: 12;
+  z-index: 15;
 }
 
 #win-box {
@@ -120,7 +120,7 @@ body {
   background-color: transparent;
   height: 100vh;
   width: 100vw;
-  z-index: 11;
+  /*z-index: 15;*/
   /*z-index: 2;*/
 }
 
@@ -143,7 +143,8 @@ body {
 .player {
   height: 100%;
   width: 100%;
-
+  z-index: 12;
+  position: absolute;
 }
 
 .player-image {
@@ -156,6 +157,11 @@ body {
   display: block;
 }
 
+.player-name {
+  margin: 5px;
+  color: white;
+}
+
 .mushroom-image {
   width: 100%;
   top: 0;
@@ -165,5 +171,5 @@ body {
   position: absolute;
   display: block;
 }
-.grow { transition: all .2s ease-in-out; }
-.grow:hover { transform: scale(2); }
+.grow { transition: all .2s ease-in-out; transform: scale(1.2); z-index: 14; border-radius: 25px;}
+.grow:hover { transform: scale(1.3); }

@@ -20,6 +20,32 @@
 	z-index: 10;
 }
 #dialogbox > div{ background:#FFF; margin:8px; }
-#dialogbox > div > #dialogboxhead{ background: #666; font-size:19px; padding:10px; color:#CCC; }
-#dialogbox > div > #dialogboxbody{ background: #333; padding:20px; color:#FFF; }
+#dialogbox > div > #dialogboxhead{ background: #666; font-size:19px; padding:10px; color:#CCC;  display: flex; justify-content: space-around;}
+#dialogbox > div > #dialogboxhead > img { max-width: 100%; max-height: 100%;}
+#dialogbox > div > #dialogboxbody{ background: #333; padding:20px; color:#FFF; display: flex; justify-content: center;}
 #dialogbox > div > #dialogboxfoot{ background: #666; padding:10px; text-align:right; }
+
+/*#intro-text {
+	display: block;
+}*/
+
+.input-box {
+  display: inline-block;
+  -webkit-box-sizing: class="support css-value">content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  padding: 10px 20px;
+  border: 1px solid #b7b7b7;
+  -webkit-border-radius: 14px;
+  border-radius: 14px;
+  font: normal 16px/normal "Times New Roman", Times, serif;
+  color: rgba(0,142,198,1);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: rgb(200,200,200);
+  -webkit-box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.4) , 0 0 6px 2px rgba(0,0,0,0.5) inset, 3px 3px 4px 0 rgba(0,0,0,0.4) , 2px 2px 2px 0 rgba(0,0,0,0.2) inset;
+  box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.4) , 0 0 6px 2px rgba(0,0,0,0.5) inset, 3px 3px 4px 0 rgba(0,0,0,0.4) , 2px 2px 2px 0 rgba(0,0,0,0.2) inset;
+  text-shadow: 4px 0 9px rgba(86,170,255,0.9) , 1px 1px 0 rgba(255,255,255,0.66) ;
+  -webkit-transform: rotateX(-2.8647889756541165deg) rotateY(-4.010704565915763deg)   ;
+  transform: rotateX(-2.8647889756541165deg) rotateY(-4.010704565915763deg)   ;
+}
