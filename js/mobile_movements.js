@@ -4,6 +4,7 @@ class MobileMovements {
     this.xDown = null
     this.yDown = null
 
+
     var self = this
     document.addEventListener('touchstart', self.handleTouchStart, false);
     document.addEventListener('touchmove', self.handleTouchMove, false);
@@ -27,22 +28,22 @@ class MobileMovements {
 
       if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
           if ( xDiff > 0 ) {
-              if (Evolution.currentPlayer.validMove('left')) {
-                Evolution.currentPlayer.move('left')
+              if (Evolution.allPlayers[MobileMovements.controlledplayerId].validMove('left')) {
+                Evolution.allPlayers[MobileMovements.controlledplayerId].move('left')
               }
           } else {
-            if (Evolution.currentPlayer.validMove('right')) {
-              Evolution.currentPlayer.move('right')
+            if (Evolution.allPlayers[MobileMovements.controlledplayerId].validMove('right')) {
+              Evolution.allPlayers[MobileMovements.controlledplayerId].move('right')
             }
           }
       } else {
           if ( yDiff > 0 ) {
-            if (Evolution.currentPlayer.validMove('up')) {
-              Evolution.currentPlayer.move('up')
+            if (Evolution.allPlayers[MobileMovements.controlledplayerId].validMove('up')) {
+              Evolution.allPlayers[MobileMovements.controlledplayerId].move('up')
             }
           } else {
-            if (Evolution.currentPlayer.validMove('down')) {
-              Evolution.currentPlayer.move('down')
+            if (Evolution.allPlayers[MobileMovements.controlledplayerId].validMove('down')) {
+              Evolution.allPlayers[MobileMovements.controlledplayerId].move('down')
             }
 
           }
