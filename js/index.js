@@ -4,11 +4,13 @@ $(document).ready(function() {
   Page.columns = 5
   Page.rows = 5
 
+  Player.power_urls = [ 'images/egg/egg4.png',
+                        'images/chicken/chicken6.png',
+                        'images/dinosaur/dinosaur4.png',
+                        'images/winner.gif']
+
   var page = new Page
   var board = new Board
-  // board.createMushroom('[3,4]')
-  // board.createMushroom('[2,4]')
-  // board.createMushroom('[5,3]')
 
   page.board = board
 
