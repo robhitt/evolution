@@ -103,6 +103,31 @@ body {
   /*z-index: 2;*/
 }
 
+#win-box-container {
+  display: none;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 12;
+}
+
+#win-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: transparent;
+  height: 100vh;
+  width: 100vw;
+  z-index: 11;
+  /*z-index: 2;*/
+}
+
+#winner-gif {
+  min-width: 100%;
+  min-height: 100%;
+}
+
 .cellImage {
   width: 100%;
   top: 0;

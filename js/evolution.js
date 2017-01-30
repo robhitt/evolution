@@ -9,11 +9,6 @@ class Evolution {
     // and add them to Evolution.allPlayers
     this.welcome()
 
-
-
-
-
-
   }
 
   welcome() {
