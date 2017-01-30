@@ -1,6 +1,4 @@
 $(document).ready(function() {
-  $('#board').fadeOut(1000)
-  $('#board').fadeIn(3500)
 
   // SET CONFIG VARIABLES
   Page.columns = 5

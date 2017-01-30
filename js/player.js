@@ -105,6 +105,11 @@ class Player {
 
     var elementInfo = document.getElementById(this.stringCoordinates())
     if (elementInfo.getElementsByClassName('mushroom').length === 1) {
+
+      marioCoinElement.load();
+      marioCoinElement.play();
+
+
       this.power += 1
       var elementToRemove = elementInfo.getElementsByClassName('mushroom')[0]
       elementToRemove.remove()
@@ -124,50 +129,48 @@ class Player {
   keyPress() {
     document.addEventListener('keydown', function(event) {
 
-      console.log('listening for key presses')
+      console.log('key pressed')
 
-    if(event.keyCode == 37) {
-      console.log('left key was pushed')
+    if(event.keyCode == 37) { // Left
       if (Evolution.currentPlayer.validMove('left')) {
         Evolution.currentPlayer.move('left')
       }
     }
-    else if(event.keyCode == 39) {
-      console.log('right key was pushed')
+    else if(event.keyCode == 39) { // Right
       if (Evolution.currentPlayer.validMove('right')) {
         Evolution.currentPlayer.move('right')
       }
-      // if (evolution.currentPlayer.validMove('right')) {
-      // evolution.currentPlayer.move('right')
-      // }
     }
-    else if(event.keyCode == 38) {
-//        alert('Up was pressed');
-      console.log('up key was pushed')
+    else if(event.keyCode == 38) { // Up
       if (Evolution.currentPlayer.validMove('up')) {
         Evolution.currentPlayer.move('up')
       }
-
     }
-    else if(event.keyCode == 40) {
-//        alert('Down was pressed');
-      console.log('down key was pushed')
+    else if(event.keyCode == 40) { // Down
       if (Evolution.currentPlayer.validMove('down')) {
         Evolution.currentPlayer.move('down')
       }
 
     }
-    else if(event.keyCode == 65) {
-//        alert('A was pressed');
+    else if(event.keyCode == 65) { // A
+      if (Evolution.currentPlayer.validMove('left')) {
+        Evolution.currentPlayer.move('left')
+      }
     }
-    else if(event.keyCode == 83) {
-//        alert('S was pressed');
+    else if(event.keyCode == 83) { // S
+      if (Evolution.currentPlayer.validMove('down')) {
+        Evolution.currentPlayer.move('down')
+      }
     }
-    else if(event.keyCode == 68) {
-//        alert('D was pressed');
+    else if(event.keyCode == 68) { // D
+      if (Evolution.currentPlayer.validMove('right')) {
+        Evolution.currentPlayer.move('right')
+      }
     }
-    else if(event.keyCode == 87) {
-//        alert('W was pressed');
+    else if(event.keyCode == 87) { // W
+      if (Evolution.currentPlayer.validMove('up')) {
+        Evolution.currentPlayer.move('up')
+      }
     }
     // q = 81
     // z = 90
@@ -247,3 +250,6 @@ mariomoveElement.setAttribute('src', 'audio/mario-bounce.mp3');
 
 var marioWallMoveElement = document.createElement('audio');
 marioWallMoveElement.setAttribute('src', 'audio/wall-bump.mp3');
+
+var marioCoinElement = document.createElement('audio');
+marioCoinElement.setAttribute('src', 'audio/power-up-mushroom.mp3');

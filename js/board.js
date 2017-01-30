@@ -33,7 +33,7 @@ class Board {
     cellElement.style.width = this.cellBoxWidth + 'px'
     cellElement.style.height = this.cellBoxHeight + 'px'
     // this is to demonstrate and display the id of the div
-    cellElement.textContent = position.toString()
+    // cellElement.textContent = position.toString()
 
     // conditional booleans to add edge classes
     var toprow = (iterator % Page.rows === 0)

@@ -8,7 +8,11 @@
     <!-- <script src="js/jquery-3.1.1.min.js"></script> -->
 
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/prompt.css">
+
     <script type="text/javascript" src='js/mobile_movements.js'></script>
+    <script type="text/javascript" src='js/prompt.js'></script>
+
     <script type="text/javascript" src='js/page.js'></script>
     <script type="text/javascript" src='js/board.js'></script>
     <script type="text/javascript" src='js/player.js'></script>
@@ -17,16 +21,32 @@
   </head>
 
   <body>
+
+    <!-- Custom Prompt -->
+    <div id="dialogoverlay"></div>
+    <div id="dialogbox">
+      <div>
+        <div id="dialogboxhead"></div>
+        <div id="dialogboxbody"></div>
+        <div id="dialogboxfoot"></div>
+      </div>
+    </div>
+
+
     <div id="wrapper">
-        <div id="board">
+      <div id="logo-container">
+        <img id='logo' src='images/evolution-logo.png'>
+      </div>
 
+      <div id="board">
+      </div>
+
+      <!-- Might not need this if we're not using flash messages -->
+      <div id="messages-container">
+        <div id="messages">
         </div>
+      </div>
 
-        <div id="messages-container">
-          <div id="messages">
-
-          </div>
-        </div>
     </div>
   </body>
 </html>

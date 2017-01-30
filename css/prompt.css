@@ -15,6 +15,7 @@
 	border-radius:10px;
 	width:550px;
 	z-index: 10;
+	top: 200px;
 }
 #dialogbox > div{ background:#FFF; margin:8px; }
 #dialogbox > div > #dialogboxhead{ background: #666; font-size:19px; padding:10px; color:#CCC; }

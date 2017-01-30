@@ -14,19 +14,33 @@ body {
 #board {
   background-color: #FFFFFF;
   bottom: 0;
-  height: 80vw;
+  display: none;
+  height: 80vh;
   left: 0;
-  margin-bottom: auto;
   margin-left: auto;
   margin-right: auto;
-  margin-top: auto;
   max-height: 80vh;
   position: absolute;
   right: 0;
-  top: 0;
-  width: 80vw;
+  top: 17vh;
+  width: 80vh;
   /*z-index: 1;*/
 }
+
+#logo {
+  height: 100%;
+  width: 100%;
+
+}
+
+#logo-container {
+  margin: auto;
+  max-width: 80vw;
+  position: relative;
+  height: 30%;
+  top: 5%;
+}
+
 
 .cell {
   opacity: .75;

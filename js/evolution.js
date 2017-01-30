@@ -3,28 +3,23 @@ class Evolution {
     console.log('Evolution class created...')
     Evolution.turnCount = 0
 
+    Evolution.allPlayers = []
+
     // this function will capture user input and create new players
     // and add them to Evolution.allPlayers
     this.welcome()
-    
-    Evolution.currentPlayer.keyPress()
 
-    Evolution.allPlayers.forEach (function (player) {
-      player.render()
-    })
+
+
+
+
+
   }
 
   welcome() {
 
-    var r = new Player
-    r.name = "Rob"
+    Prompt.render('Players, enter your names:','addPlayertoGame')
 
-    var a = new Player
-    a.name = "Andy"
-
-
-    Evolution.allPlayers = [r, a]
-    Evolution.currentPlayer = r
   }
 }
 
@@ -50,4 +45,33 @@ Evolution.flash = function (potentialDirection) {
       $('#messages').text('')
     })
   })
+}
+
+var addPlayertoGame = function(player_names) {
+
+
+  player_names.forEach (function(name) {
+
+    var newPlayer = new Player
+    newPlayer.name = name
+
+
+    Evolution.allPlayers.push(newPlayer)
+
+
+  })
+
+  Evolution.currentPlayer = Evolution.allPlayers[0]
+
+  Evolution.currentPlayer.keyPress()
+
+  Evolution.allPlayers.forEach (function (player) {
+    player.render()
+  })
+
+//  $('#board').fadeOut(1000)
+  $('#board').fadeIn(3500)
+
+
+
 }

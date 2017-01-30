@@ -63,13 +63,13 @@ function CustomPrompt(){
 		dialogoverlay.style.display = "block";
 	  dialogoverlay.style.height = winH+"px";
 		dialogbox.style.left = (winW/2) - (550 * .5)+"px";
-	  dialogbox.style.top = "100px";
+//	  dialogbox.style.top = "100px";
 	  dialogbox.style.display = "block";
 
 		document.getElementById('dialogboxhead').innerHTML = "Welcome to Evolution";
 	  document.getElementById('dialogboxbody').innerHTML = dialog;
-		document.getElementById('dialogboxbody').innerHTML += '<br><input id="prompt_value1">';
-		document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Prompt.ok(\''+func+'\')">OK</button> <button onclick="Prompt.cancel()">Cancel</button>';
+		document.getElementById('dialogboxbody').innerHTML += '<br><input id="prompt_value1"><br><input id="prompt_value2">';
+		document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Prompt.ok(\''+func+'\')">OK</button>';
 	}
 
 	this.cancel = function(){
@@ -81,9 +81,13 @@ function CustomPrompt(){
 	// Use this to obtain player 1 Name
 	this.ok = function(func){
 		var prompt_value1 = document.getElementById('prompt_value1').value;
-		window[func](prompt_value1);
+		var prompt_value2 = document.getElementById('prompt_value2').value;
+		//debugger
+		window[func]([prompt_value1, prompt_value2]);
 		document.getElementById('dialogbox').style.display = "none";
 		document.getElementById('dialogoverlay').style.display = "none";
+
+
 		return prompt_value1
 	}
 
