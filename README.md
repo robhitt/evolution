@@ -3,10 +3,10 @@
 #### About Evolution
 
 This is a 2 player alternating board game.  The objective is to land on the squares with the mushrooms. Once you obtain a mushroom you level up to the character in the evolution cycle.  You'll grow in the evolution cycle in this order:
-- Egg
-- Chicken
-- Dinosaur
-- Immortal
+1. Egg
+2. Chicken
+3. Dinosaur
+4. Immortal
 
 Once you become immortal you've won! :tada:
 
@@ -29,6 +29,9 @@ Player 2 controls
 
 Head on over to the [game](https://robhitt.github.io/evolution/).
 
+#### Code / Frameworks
+- Single-page application Javascript game with a responsive board and player pieces
+- Javascript and jQuery to enable dynamic movement based on keyPress events manipulating the DOM
 
 #### Made in NYC by:
 
