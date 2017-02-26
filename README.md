@@ -2,7 +2,7 @@
 
 #### About Evolution
 
-This is a 2 player alternating game board game.  The objective is to land on the squares with the mushrooms. Once you obtain a mushroom you level up to the evolution cycle.  The evolution cycle grows like this:
+This is a 2 player alternating board game.  The objective is to land on the squares with the mushrooms. Once you obtain a mushroom you level up to the character in the evolution cycle.  You'll grow in the evolution cycle in this order:
 - Egg
 - Chicken
 - Dinosaur
