@@ -1,35 +1,37 @@
 class Evolution {
   constructor() {
-    console.log('Evolution class created...')
+    console.log('Evolution class created.')
     Evolution.turnCount = 0
 
     Evolution.allPlayers = []
 
     // this function will capture user input and create new players
     // and add them to Evolution.allPlayers
-    this.welcome()
-    this.keyPress()
-  }
+    // parameters: ('prompt text', callback function)
+    // when 'ok' is clicked,
+    // the callback function 'addPlayerstoGame' will execute with an array of names as parameters
+    // addPlayerstoGame(names) will set up the game and load the intro music and animation when it is called
+    Prompt.render(Opts.initialPrompt,'addPlayerstoGame')
 
-  welcome() {
-    Prompt.render('Players, enter your names:','addPlayertoGame')
-  }
-
-  keyPress() {
+    // listen for keypresses
     document.addEventListener('keydown', Evolution.handleKeyDown)
   }
 }
 
-
+// these captured key presses handle the turns in the game
 Evolution.handleKeyDown = function(event) {
   console.log('key pressed')
 
+  // listen for player 1 movements
   if (Evolution.currentPlayer.playerId === 1) {
     switch (event.keyCode) {
       case 37: // Left
+        // if the move is valid and the div is unoccupied...
         if (Evolution.currentPlayer.validMove('left')) {
+          // move the player div
           Evolution.currentPlayer.move('left')
         }
+        // uncomment these lines to listen for keypresses without taking turns...
         // if (Evolution.allPlayers[1].validMove('left')) {
         //   Evolution.allPlayers[1].move('left')
         // }
@@ -99,13 +101,15 @@ Evolution.handleKeyDown = function(event) {
 
     switch (event.keyCode) {
       case 81: // Q
-        // Rob case
+        var hornElement = document.createElement('audio');
+        hornElement.setAttribute('src', 'audio/horn.mp3');
         hornElement.load();
         hornElement.play();
         console.log('q')
         break;
       case 90: // Z
-        // Rob case
+        var loseElement = document.createElement('audio');
+        loseElement.setAttribute('src', 'audio/lose-horn.mp3');
         loseElement.load();
         loseElement.play();
         console.log('z')
@@ -113,72 +117,60 @@ Evolution.handleKeyDown = function(event) {
       }
   };
 
-  var hornElement = document.createElement('audio');
-  hornElement.setAttribute('src', 'audio/horn.mp3');
-
-  var loseElement = document.createElement('audio');
-  loseElement.setAttribute('src', 'audio/lose-horn.mp3');
-
-
-
-
-
-
-
-
-
-
-
-
 // Outside of Class
 Evolution.newCurrentPlayer = function () {
+  // add a turnCount
   Evolution.turnCount += 1
 
+  // remove grow animation from previous player
   Evolution.currentPlayer.playerDiv.classList.remove('grow')
 
-    // this option is for a two player game
-    if (Evolution.turnCount % 2 === 0) {
-      Evolution.currentPlayer = Evolution.allPlayers[0]
-    } else {
-      Evolution.currentPlayer = Evolution.allPlayers[1]
-    }
+  // cycle through allPlayers with turnCount to select a new current player
+  Evolution.currentPlayer = Evolution.allPlayers[ Evolution.turnCount % Evolution.allPlayers.length ]
+
+  // add grow animation to current player
   Evolution.currentPlayer.playerDiv.classList.add('grow')
-    // this option is for more than 2 players
-    //  Evolution.currentPlayer = Evolution.allPlayers[ Evolution.turnCount % Evolution.allPlayers.length ]
 }
 
-Evolution.flash = function (potentialDirection) {
-  $('#messages').text(`Moving ${potentialDirection} is not valid.`)
-  $('#messages-container').fadeTo(2000, .8, function() {
-    $(this).fadeTo(2000,0, function() {
-      $('#messages').text('')
-    })
-  })
-}
-
-// this outside of class or instance because of the Prompt class
-var addPlayertoGame = function(player_names) {
-
+// this is outside of the class because the Prompt class is calling window['addPlayerstoGame']
+var addPlayerstoGame = function(player_names) {
+  // for each player name...
   player_names.forEach (function(name) {
-
+    // create a new player
     var newPlayer = new Player
+
+    // set the player's name
     newPlayer.name = name
+
+    // create a div for the player
     newPlayer.createPlayerDiv()
 
+    // add the player to the allPlayers array
     Evolution.allPlayers.push(newPlayer)
   })
 
+  // set the current player to the first player in the allPlayers array
   Evolution.currentPlayer = Evolution.allPlayers[0]
 
+  // render each player
   Evolution.allPlayers.forEach (function (player) {
     player.render()
   })
 
-//  $('#board').fadeOut(1000)
-  introElement.load();
-  introElement.play();
-  $('#board').fadeIn(5000)
+  // after all players have been added,
+  // play the intro
+  Evolution.intro()
+
 }
 
-var introElement = document.createElement('audio');
-introElement.setAttribute('src', 'audio/pac-man-intro.mp3');
+Evolution.intro = function() {
+  // load and play the audio file
+  var introElement = document.createElement('audio');
+  introElement.setAttribute('src', 'audio/pac-man-intro.mp3');
+
+  introElement.load();
+  introElement.play();
+
+  // use jQuery to fade in the board
+  $(`#${Opts.boardDivId}`).fadeIn(5000)
+}

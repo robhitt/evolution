@@ -1,22 +1,22 @@
-
-// this class handles the page wrapper size
-
-
 class Page {
   constructor() {
 
-    // get window size (window.innerHeight works better in mobile)
+    // get the window size (window.innerHeight works better in mobile)
     this.mainWidth = window.innerWidth
     this.mainHeight = window.innerHeight
 
+    // prevent default scrolling behavior for mobile devices
     this.preventDefaultforMobile()
+
+    // render the page
     this.render()
+
+    // set an event listener when the window is resized
     this.listenForResize()
   }
 
   render() {
-
-   // set wrapper size to the window size
+   // set the wrapper size to the window size
    document.getElementById('wrapper').style.width = this.mainWidth + 'px'
    document.getElementById('wrapper').style.height = this.mainHeight + 'px'
  };
@@ -31,16 +31,22 @@ class Page {
   }
 
   listenForResize() {
-
     var that = this
-    // listen for resize and orientation changes and make adjustments
+
+    // listen for resize and orientation changes
     window.addEventListener('resize', function () {
 
+      // re-set the page width and height
       that.mainWidth = window.innerWidth;
       that.mainHeight = window.innerHeight;
 
+      // reset the wrapper width and height
       that.render()
+
+      // re-set the board size and cell sizes
       that.board.setSizeVariables()
+
+      // resize and reposition the cells
       that.board.repositionCells()
 
     }, false); // bubbling phase
