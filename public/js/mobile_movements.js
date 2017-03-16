@@ -4,7 +4,6 @@ class MobileMovements {
     this.xDown = null
     this.yDown = null
 
-
     var self = this
     document.addEventListener('touchstart', self.handleTouchStart, false);
     document.addEventListener('touchmove', self.handleTouchMove, false);
@@ -28,22 +27,22 @@ class MobileMovements {
 
       if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
           if ( xDiff > 0 ) {
-              if (Evolution.allPlayers[MobileMovements.controlledplayerId].validMove('left')) {
-                Evolution.allPlayers[MobileMovements.controlledplayerId].move('left')
+              if (Evolution.allPlayers[Opts.mobileControlledplayerId].validMove('left')) {
+                Evolution.allPlayers[Opts.mobileControlledplayerId].move('left')
               }
           } else {
-            if (Evolution.allPlayers[MobileMovements.controlledplayerId].validMove('right')) {
-              Evolution.allPlayers[MobileMovements.controlledplayerId].move('right')
+            if (Evolution.allPlayers[Opts.mobileControlledplayerId].validMove('right')) {
+              Evolution.allPlayers[Opts.mobileControlledplayerId].move('right')
             }
           }
       } else {
           if ( yDiff > 0 ) {
-            if (Evolution.allPlayers[MobileMovements.controlledplayerId].validMove('up')) {
-              Evolution.allPlayers[MobileMovements.controlledplayerId].move('up')
+            if (Evolution.allPlayers[Opts.mobileControlledplayerId].validMove('up')) {
+              Evolution.allPlayers[Opts.mobileControlledplayerId].move('up')
             }
           } else {
-            if (Evolution.allPlayers[MobileMovements.controlledplayerId].validMove('down')) {
-              Evolution.allPlayers[MobileMovements.controlledplayerId].move('down')
+            if (Evolution.allPlayers[Opts.mobileControlledplayerId].validMove('down')) {
+              Evolution.allPlayers[Opts.mobileControlledplayerId].move('down')
             }
 
           }

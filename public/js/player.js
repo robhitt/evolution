@@ -1,48 +1,31 @@
 class Player {
 
   constructor() {
+    // the playerId will equal the current number of players
+    // in the allPlayers array, before the current player is added, e.g. 0, 1, 2, etc.
     this.playerId = Evolution.allPlayers.length
     this.power = 0
-    this.color = Player.colors[this.playerId]
-    this.coordinates = Player.startingCoordinates[this.playerId]
-    // this.createPlayerDiv()
+
+    // set the color and coordinates based on the configurations set in index.js
+    this.color = Opts.playerColors[this.playerId]
+    this.coordinates = Opts.playerStartingCoordinates[this.playerId]
   }
 
-  getName() {
-    return prompt("Please enter your name:", "name here");
-  }
-
+  // helper method
   stringCoordinates() {
       return `[${this.coordinates.toString()}]`
   }
 
-  // parameter will be something in this array ['left', 'right', 'up', 'down']
+  // called from Evolution keypresses
+  // parameter will be one of ['left', 'right', 'up', 'down']
   validMove(potentialDirection) {
     marioWallMoveElement.load();
 
-    // var otherPlayerId
-    // var currentId = this.playerId
-    //
-    // if (currentId === 1) {
-    //   otherPlayerId = 0
-    // } else {
-    //   otherPlayerId = 1
-    // }
-    //
-    // var player1 = Evolution.allPlayers[currentId]
-    // var player2 = Evolution.allPlayers[otherPlayerId]
-    //
-    // if (player2.coordinates === potentialDirection) {
-    //   marioWallMoveElement.play();
-    //   return false
-    //   }
-
-
+    // check to see if moves are valid, based on direction and class names of border cells
     switch (potentialDirection) {
       case 'left':
         if (document.getElementById(this.stringCoordinates()).classList.contains('leftRow')) {
           marioWallMoveElement.play();
-          // Evolution.flash(potentialDirection)
           return false
         }
         break;
@@ -50,7 +33,6 @@ class Player {
       case 'right':
         if (document.getElementById(this.stringCoordinates()).classList.contains('rightRow')) {
           marioWallMoveElement.play();
-          // Evolution.flash(potentialDirection)
           return false
         }
         break;
@@ -58,7 +40,6 @@ class Player {
       case 'up':
         if (document.getElementById(this.stringCoordinates()).classList.contains('topRow')) {
           marioWallMoveElement.play();
-          // Evolution.flash(potentialDirection)
           return false
         }
         break;
@@ -66,12 +47,13 @@ class Player {
       case 'down':
         if (document.getElementById(this.stringCoordinates()).classList.contains('bottomRow')) {
           marioWallMoveElement.play();
-          // Evolution.flash(potentialDirection)
           return false
         }
         break;
     }
 
+    // if the move is valid (in terms of the border positions),
+    // find the future coordinates to check if it is occupied
     var futureCooridnates
 
     switch (potentialDirection) {
@@ -91,7 +73,8 @@ class Player {
 
     var futureStringCoordinates = `[${futureCooridnates.toString()}]`
 
-
+    // check the future coordinates div for any divs matching a playerId
+    // return false if the div is occupied
     if (document.getElementById(futureStringCoordinates).childNodes.length > 0 ) {
       var futureBoxId = document.getElementById(futureStringCoordinates).childNodes[0].getAttribute('id')
       if (futureBoxId === '0' || futureBoxId === '1') {
@@ -100,15 +83,15 @@ class Player {
       }
     }
 
+    // if the move is valid and the cell is not occupied by another player, return true
     return true
   }
 
-
-  // paramater will be something in this array ['left', 'right', 'up', 'down']
+  // when the move is valid...
   move(validDirection) {
-
     mariomoveElement.load();
 
+    // change the player's coordinates
     switch (validDirection) {
       case 'left':
         this.coordinates = [this.coordinates[0] - 1, this.coordinates[1]]
@@ -124,27 +107,35 @@ class Player {
         break;
     }
 
+    // get the player's new position on the board.
     var playerPositionDiv = document.getElementById(this.stringCoordinates())
 
     // if the player's location contains a mushroom...
     if (playerPositionDiv.getElementsByClassName('mushroom').length === 1) {
-
       marioCoinElement.load();
       marioCoinElement.play();
 
+      // add a power unit to the player
       if (this.power < 3) { this.power += 1 }
 
-      this.playerDiv.childNodes[0].setAttribute('src', Player.power_urls[this.power]) // change player's image
-      playerPositionDiv.getElementsByClassName('mushroom')[0].remove() // remove mushroom element
+      // update the image
+      this.playerDiv.childNodes[0].setAttribute('src', Opts.powerURLs[this.power])
+
+      // remove the mushroom
+      playerPositionDiv.getElementsByClassName('mushroom')[0].remove()
     }
 
     mariomoveElement.play();
+
+    // render the player to the player's new position
     this.render()
-    this.won() // check to see if current player has won
+
+    // check to see if current player has won
+    this.won()
+
+    // set the new current player
     Evolution.newCurrentPlayer()
   }
-
-
 
   render() {
     document.getElementById(this.stringCoordinates()).appendChild(this.playerDiv)
@@ -163,7 +154,7 @@ class Player {
 
     var imageElement = document.createElement('img')
     imageElement.classList.add('player-image')
-    imageElement.setAttribute('src', Player.power_urls[0])
+    imageElement.setAttribute('src', Opts.powerURLs[0])
 
     playerDiv.appendChild(imageElement)
     playerDiv.appendChild(nameElement)
@@ -171,6 +162,7 @@ class Player {
     this.playerDiv = playerDiv
   }
 
+  // check to see if the previous move resulted in a won game
   won() {
     if (Evolution.currentPlayer.power == 3) {
       document.removeEventListener('keydown', Evolution.handleKeyDown)
@@ -179,17 +171,8 @@ class Player {
       audioElement.setAttribute('src', 'audio/champions.mp3');
       audioElement.load();
       audioElement.play();
-      // var winnerElement = document.getElementById('win-box')
-      // winnerElement.style.display = "block"
-      // alert('Congratulations you are immortal, you\'ve won')
 
-      // var winHeight = window.innerHeight
-      // var winWidth = window.innerWidth
-      //
-      // $('#win-box img').
-
-      document.getElementById('win-text').textContent = Evolution.wintext(Evolution.currentPlayer.name)
-
+      document.getElementById('win-text').textContent = Opts.wintext(Evolution.currentPlayer.name)
 
       $('#win-box-container').fadeTo(10000, 1, function() {
         document.getElementById('win-text').classList.add('animate_me')

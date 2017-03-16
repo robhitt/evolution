@@ -9,9 +9,9 @@ app.use(express.static(path.join(__dirname, 'public'))); // this middleware serv
 
 // Initialize server
 var server = app.listen(port, function () {
-  console.log('Hi Rob Hitt, Listening on port %d', server.address().port);
+  console.log('Listening on port %d', server.address().port);
 });
 
-app.get('/', function (req, res) {
-  res.render('index.html');
-});
+// app.get('/', function (req, res) {
+//   res.render('index.html');
+// });
