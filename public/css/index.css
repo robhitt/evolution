@@ -1,0 +1,205 @@
+body {
+  margin: 0;
+}
+
+#wrapper {
+  /*background-color: #ADD8E6;*/
+  background: linear-gradient(#FFF, #FFF, pink, #FFF);
+  height: 100vh;
+  width: 100vw;
+  /*display: flex;
+  justify-content: center;
+  align-items: center;*/
+}
+
+#board {
+  background-color: #FFFFFF;
+  bottom: 0;
+  display: none;
+  height: 80vh;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 80%;
+  max-width: 98%;
+  position: absolute;
+  right: 0;
+  top: 17vh;
+  width: 80vh;
+  /*z-index: 1;*/
+}
+
+#logo {
+  height: 100%;
+  width: 100%;
+
+}
+
+#logo-container {
+  margin: auto;
+  max-width: 60vw;
+  position: relative;
+  /*height: 30%;*/
+  top: 5%;
+}
+
+
+.cell {
+  opacity: 1;
+  position: absolute;
+  border: 1px grey solid;
+  box-sizing: border-box;
+}
+
+.leftRow {
+  border-left: 5px black solid;
+}
+
+.rightRow {
+  border-right: 5px black solid;
+}
+
+.topRow {
+  border-top: 5px black solid;
+}
+
+.bottomRow {
+  border-bottom: 5px black solid;
+}
+
+#messages-container{
+    display: none;
+    color: white;
+    background-color: black;
+    bottom: 0;
+    height: 10vh;
+    left: 0;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 70vw;
+}
+
+#messages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: black;
+  bottom: 0;
+  height: 10vh;
+  left: 0;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 70vw;
+  /*z-index: 2;*/
+}
+
+#win-box-container {
+  display: none;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 15;
+}
+
+#win-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: transparent;
+  height: 100vh;
+  width: 100vw;
+  /*z-index: 15;*/
+  /*z-index: 2;*/
+}
+
+#winner-gif {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+
+#win-text {
+  display: none;
+  position: fixed;
+  /*font-family: sans-serif;*/
+  /*font-size: 4em;*/
+  /*opacity: .6;*/
+  text-shadow: 1px 2px 8px black;
+  color: #00ffff;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 4em;
+  font-weight: 300;
+  line-height: 30px;
+}
+
+.animate_me {
+
+  animation: 60s credits linear infinite;
+}
+
+@keyframes credits {
+  0% {
+    top: 100%;
+  }
+  100% {
+    top: -500%;
+  }
+}
+
+.cellImage {
+  width: 100%;
+  top: 0;
+  height: 100%;
+  bottom: 1px;
+  left: 0;
+  position: absolute;
+  display: block;
+
+}
+
+.player {
+  height: 100%;
+  width: 100%;
+  z-index: 12;
+  position: absolute;
+}
+
+.player-image {
+  width: 100%;
+  top: 0;
+  height: 100%;
+  bottom: 1px;
+  left: 0;
+  position: absolute;
+  display: block;
+}
+
+.player-name {
+  margin: 5px;
+  color: white;
+}
+
+.mushroom-image {
+  width: 100%;
+  top: 0;
+  height: 100%;
+  bottom: 1px;
+  left: 0;
+  position: absolute;
+  display: block;
+}
+.grow { transition: all .2s ease-in-out; transform: scale(1.2); z-index: 14; border-radius: 25px;}
+.grow:hover { transform: scale(1.3); }
