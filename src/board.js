@@ -1,4 +1,6 @@
-class Board {
+import Opts from './config/opts';
+
+export default class Board {
   constructor(columns, rows, boardDivId) {
 
     // set instance variables to create board

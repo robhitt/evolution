@@ -1,4 +1,4 @@
-class Page {
+export default class Page {
   constructor() {
 
     // get the window size (window.innerHeight works better in mobile)

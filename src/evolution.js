@@ -1,4 +1,8 @@
-class Evolution {
+import Prompt from './prompt';
+import Player from './player';
+import Opts from './config/opts';
+
+export default class Evolution {
   constructor() {
     console.log('Evolution class created.')
     Evolution.turnCount = 0
@@ -11,7 +15,7 @@ class Evolution {
     // when 'ok' is clicked,
     // the callback function 'addPlayerstoGame' will execute with an array of names as parameters
     // addPlayerstoGame(names) will set up the game and load the intro music and animation when it is called
-    Prompt.render(Opts.initialPrompt,'addPlayerstoGame')
+    Prompt.render(Opts.initialPrompt, Evolution)
 
     // listen for keypresses
     document.addEventListener('keydown', Evolution.handleKeyDown)
@@ -132,8 +136,7 @@ Evolution.newCurrentPlayer = function () {
   Evolution.currentPlayer.playerDiv.classList.add('grow')
 }
 
-// this is outside of the class because the Prompt class is calling window['addPlayerstoGame']
-var addPlayerstoGame = function(player_names) {
+Evolution.addPlayerstoGame = function(player_names) {
   // for each player name...
   player_names.forEach (function(name) {
     // create a new player

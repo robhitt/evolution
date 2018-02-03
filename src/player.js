@@ -1,4 +1,7 @@
-class Player {
+import Evolution from './evolution';
+import Opts from './config/opts';
+
+export default class Player {
 
   constructor() {
     // the playerId will equal the current number of players

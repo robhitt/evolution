@@ -37,3 +37,5 @@ Head on over to the [game](https://robhitt.github.io/evolution/).
 
 [Rob Hitt](http://www.dontfeartherepo.com) &
 [Andrew Nease](http://www.aplacetoputcode.com)
+
+`npm start` to build the front end and run the localhost server
