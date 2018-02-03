@@ -1,5 +1,5 @@
 function CustomPrompt(){
-	this.render = function(dialog, func){
+	this.render = function(dialog, Evolution){
 
 		var dialogoverlay = document.getElementById('dialogoverlay');
 	  var dialogbox = document.getElementById('dialogbox');
@@ -19,23 +19,23 @@ function CustomPrompt(){
 		document.getElementById('prompt_value1').classList.add('input-box')
 		document.getElementById('prompt_value2').classList.add('input-box')
 
-		// when OK button is clicked, execute Prompt.ok(function)
-		document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Prompt.ok(\''+func+'\')">OK</button>';
+		document.getElementById('dialogboxfoot').innerHTML = '<button id="ok-button">OK</button>';
+
+		// when ok button is clicked...
+		document.getElementById('ok-button').addEventListener('click', function() {
+			// get the input from the input fields
+			var prompt_value1 = document.getElementById('prompt_value1').value;
+			var prompt_value2 = document.getElementById('prompt_value2').value;
+
+			// execute the callback with a parameter of an array with the two values
+			Evolution.addPlayerstoGame([prompt_value1, prompt_value2]);
+
+			// hide the divs
+			document.getElementById('dialogbox').style.display = "none";
+			document.getElementById('dialogoverlay').style.display = "none";
+		})
 	}
 
-	this.ok = function(func){
-		// get the input from the input fields
-		var prompt_value1 = document.getElementById('prompt_value1').value;
-		var prompt_value2 = document.getElementById('prompt_value2').value;
-
-		// execute the callback with a parameter of an array with the two values
-		window[func]([prompt_value1, prompt_value2]);
-
-		// hide the divs
-		document.getElementById('dialogbox').style.display = "none";
-		document.getElementById('dialogoverlay').style.display = "none";
-
-	}
 }
 
-var Prompt = new CustomPrompt();
+export default new CustomPrompt();

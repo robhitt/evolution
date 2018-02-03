@@ -1,5 +1,5 @@
 // source: http: //stackoverflow.com/questions/2264072/detect-a-finger-swipe-through-javascript-on-the-iphone-and-android
-class MobileMovements {
+export default class MobileMovements {
   constructor () {
     this.xDown = null
     this.yDown = null

@@ -1,5 +1,5 @@
 
-Opts = {
+export default {
 
   // board options
   boardDivId: 'board',
@@ -17,7 +17,7 @@ Opts = {
   playerStartingCoordinates: [ [1,1], [5,5] ],
 
   // intial prompt text
-  initialPrompt: "Players, enter your names:",
+  initialPrompt: 'Players, enter your names:',
 
   // win text
   wintext: function (winner) {

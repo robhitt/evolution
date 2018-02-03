@@ -1,3 +1,9 @@
+import Page from './page';
+import Board from './board';
+import Opts from './config/opts';
+import Evolution from './evolution';
+import MobileMovements from './mobile-movements';
+
 $(document).ready(function() {
 
   // initialize the page and board
